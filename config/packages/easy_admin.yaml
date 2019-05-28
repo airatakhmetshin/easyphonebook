@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Subdivision:
+            class: App\Entity\Subdivision
+        Department:
+            class: App\Entity\Department
+        Phone:
+            class: App\Entity\Phone
+        Employee:
+            class: App\Entity\Employee
