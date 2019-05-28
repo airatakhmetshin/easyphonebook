@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DepartmentRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Department
 {
@@ -37,6 +38,16 @@ class Department
      * @ORM\ManyToOne(targetEntity="App\Entity\Subdivision", inversedBy="departments")
      */
     private $subdivision;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -113,5 +124,31 @@ class Department
         $this->subdivision = $subdivision;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAt(): void
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function setUpdatedAt(): void
+    {
+        $this->updatedAt = new \DateTime();
     }
 }

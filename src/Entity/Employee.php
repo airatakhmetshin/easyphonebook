@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployeeRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Employee
 {
@@ -133,11 +134,12 @@ class Employee
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAt(): void
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->createdAt = new \DateTime();
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
@@ -145,11 +147,12 @@ class Employee
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function setUpdatedAt(): void
     {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
+        $this->updatedAt = new \DateTime();
     }
 
     /**
