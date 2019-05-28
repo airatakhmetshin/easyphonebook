@@ -148,6 +148,7 @@ class Employee
     }
 
     /**
+     * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function setUpdatedAt(): void

@@ -145,6 +145,7 @@ class Department
     }
 
     /**
+     * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function setUpdatedAt(): void

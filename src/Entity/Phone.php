@@ -136,6 +136,7 @@ class Phone
     }
 
     /**
+     * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function setUpdatedAt(): void

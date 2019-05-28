@@ -128,6 +128,7 @@ class Subdivision
     }
 
     /**
+     * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function setUpdatedAt(): void
