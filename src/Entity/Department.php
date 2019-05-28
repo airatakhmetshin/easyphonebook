@@ -33,6 +33,11 @@ class Department
      */
     private $phones;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Subdivision", inversedBy="departments")
+     */
+    private $subdivision;
+
     public function __construct()
     {
         $this->phones = new ArrayCollection();
@@ -94,6 +99,18 @@ class Department
                 $phone->setDepartment(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSubdivision(): ?Subdivision
+    {
+        return $this->subdivision;
+    }
+
+    public function setSubdivision(?Subdivision $subdivision): self
+    {
+        $this->subdivision = $subdivision;
 
         return $this;
     }
