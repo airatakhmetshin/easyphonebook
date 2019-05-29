@@ -16,5 +16,13 @@ easy_admin:
                     - phones
         Phone:
             class: App\Entity\Phone
+            form:
+                fields:
+                    - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
+                    - phoneNumber
+                    - alternateNumber
+                    - cabinets
+                    - employees
+                    - department
         Employee:
             class: App\Entity\Employee
