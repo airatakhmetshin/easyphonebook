@@ -2,6 +2,10 @@ easy_admin:
     entities:
         Subdivision:
             class: App\Entity\Subdivision
+            form:
+                fields:
+                    - name
+                    - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
         Department:
             class: App\Entity\Department
         Phone:
