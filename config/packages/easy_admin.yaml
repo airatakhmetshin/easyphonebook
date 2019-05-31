@@ -26,3 +26,11 @@ easy_admin:
                     - department
         Employee:
             class: App\Entity\Employee
+            form:
+                fields:
+                    - lastName
+                    - firstName
+                    - middleName
+                    - position
+                    - cellphoneNumbers
+                    - phones
