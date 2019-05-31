@@ -64,12 +64,17 @@ class Employee
         $this->phones = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getFullName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string
     {
         return $this->lastName;
     }
@@ -81,7 +86,7 @@ class Employee
         return $this;
     }
 
-    public function getFirstName(): ?string
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -93,7 +98,7 @@ class Employee
         return $this;
     }
 
-    public function getMiddleName(): ?string
+    public function getMiddleName(): string
     {
         return $this->middleName;
     }
@@ -103,6 +108,11 @@ class Employee
         $this->middleName = $middleName;
 
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->getLastName() . ' ' . $this->getFirstName() . ' ' . $this->getMiddleName();
     }
 
     public function getPosition(): ?string
