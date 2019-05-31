@@ -29,7 +29,7 @@ class Subdivision
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $name = '';
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Department", mappedBy="subdivision")
@@ -51,6 +51,11 @@ class Subdivision
         $this->departments = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,7 +73,7 @@ class Subdivision
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
