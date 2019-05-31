@@ -6,6 +6,7 @@ easy_admin:
                 fields:
                     - name
                     - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
+                    - { property: 'departments', type_options: { disabled: true } }
         Department:
             class: App\Entity\Department
             form:
