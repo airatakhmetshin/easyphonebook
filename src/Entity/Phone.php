@@ -66,6 +66,11 @@ class Phone
         $this->employees = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getPhoneNumber() ?: 'ID: ' . $this->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

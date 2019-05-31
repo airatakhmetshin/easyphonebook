@@ -14,7 +14,7 @@ easy_admin:
                     - name
                     - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
                     - subdivision
-                    - phones
+                    - { property: 'phones', type_options: { disabled: true } }
         Phone:
             class: App\Entity\Phone
             form:
