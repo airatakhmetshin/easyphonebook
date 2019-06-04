@@ -4,6 +4,13 @@ easy_admin:
             class: App\Entity\Subdivision
             list:
                 title: 'Список подразделений'
+                sort: 'updatedAt'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'priority', label: 'field.priority' }
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'departments', label: 'field.departments' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
             form:
                 title: 'Добавить/редактировать подразделение'
                 fields:
