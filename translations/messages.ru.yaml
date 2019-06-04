@@ -3,3 +3,7 @@ menu:
     departments: Отделы
     phones: Телефоны
     employees: Сотрудники
+button:
+    new: Создать
+    edit: Редактировать
+    delete: Удалить

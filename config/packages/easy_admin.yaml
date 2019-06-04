@@ -5,6 +5,11 @@ easy_admin:
             - { entity: 'Department', label: 'menu.departments' }
             - { entity: 'Phone', label: 'menu.phones' }
             - { entity: 'Employee', label: 'menu.employees' }
+    list:
+        actions:
+            - { name: 'new', icon: 'plus', label: 'button.new' }
+            - { name: 'edit', icon: 'pencil', label: false, title: 'button.edit' }
+            - { name: 'delete', icon: 'trash', label: false, title: 'button.delete' }
     entities:
         Subdivision:
             class: App\Entity\Subdivision
