@@ -7,3 +7,23 @@ button:
     new: Создать
     edit: Редактировать
     delete: Удалить
+field:
+    id: ID
+    priority: Приоритет
+    name: Название
+    subdivision: Подразделение
+    departments: Связанные отделы
+    phones: Связанные телефоны
+    phone_number: Номер телефона
+    alternate_number: Доп. номер
+    cabinets: Кабинеты
+    employees: Связанные сотрудники
+    department: Отдел
+    lastName: Фамилия
+    firstName: Имя
+    middleName: Отчество
+    fullname: ФИО
+    position: Должность
+    cellphone_numbers: Сотовые телефоны
+    created_at: Дата создания
+    updated_at: Дата изменения

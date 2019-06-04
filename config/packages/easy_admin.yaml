@@ -13,36 +13,96 @@ easy_admin:
     entities:
         Subdivision:
             class: App\Entity\Subdivision
+            list:
+                title: 'Список подразделений'
             form:
+                title: 'Добавить/редактировать подразделение'
                 fields:
-                    - name
-                    - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
-                    - { property: 'departments', type_options: { disabled: true } }
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'departments', label: 'field.departments', type_options: { disabled: true } }
+            edit:
+                fields:
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
         Department:
             class: App\Entity\Department
+            list:
+                title: 'Список отделов'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'priority', label: 'field.priority' }
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'subdivision', label: 'field.subdivision' }
+                    - { property: 'createdAt', label: 'field.created_at' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
             form:
                 fields:
-                    - name
-                    - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
-                    - subdivision
-                    - { property: 'phones', type_options: { disabled: true } }
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'subdivision', label: 'field.subdivision' }
+                    - { property: 'phones', label: 'field.phones', type_options: { disabled: true } }
+            edit:
+                fields:
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
         Phone:
             class: App\Entity\Phone
+            list:
+                title: 'Список телефонов'
+                sort: 'updatedAt'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'priority', label: 'field.priority' }
+                    - { property: 'phoneNumber', label: 'field.phone_number' }
+                    - { property: 'alternateNumber', label: 'field.alternate_number' }
+                    - { property: 'cabinets', label: 'field.cabinets' }
+                    - { property: 'employees', label: 'field.employees' }
+                    - { property: 'department', label: 'field.department' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
             form:
                 fields:
-                    - { property: 'priority', type_options: { attr: { value: '0', min: 0, max: 99 } } }
-                    - phoneNumber
-                    - alternateNumber
-                    - cabinets
-                    - employees
-                    - department
+                    - { property: 'id', label: 'field.id', type_options: { disabled: true } }
+                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'phoneNumber', label: 'field.phone_number' }
+                    - { property: 'alternateNumber', label: 'field.alternate_number' }
+                    - { property: 'cabinets', label: 'field.cabinets' }
+                    - { property: 'employees', label: 'field.employees' }
+                    - { property: 'department', label: 'field.department' }
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
+            new:
+                title: 'Новый номер телефона'
+                fields:
+                    - '-id'
+                    - '-createdAt'
+                    - '-updatedAt'
         Employee:
             class: App\Entity\Employee
+            list:
+                title: 'Список сотрудников'
+                sort: 'updatedAt'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'fullname', label: 'field.fullname' }
+                    - { property: 'position', label: 'field.position' }
+                    - { property: 'cellphoneNumbers', label: 'field.cellphone_numbers' }
+                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
             form:
                 fields:
-                    - lastName
-                    - firstName
-                    - middleName
-                    - position
-                    - cellphoneNumbers
-                    - phones
+                    - { property: 'id', label: 'field.id', type_options: { disabled: true } }
+                    - { property: 'lastName', label: 'field.lastName' }
+                    - { property: 'firstName', label: 'field.firstName' }
+                    - { property: 'middleName', label: 'field.middleName' }
+                    - { property: 'position', label: 'field.position' }
+                    - { property: 'cellphoneNumbers', label: 'field.cellphone_numbers' }
+                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
+            new:
+                fields:
+                    - '-id'
+                    - '-createdAt'
+                    - '-updatedAt'
