@@ -12,12 +12,15 @@ easy_admin:
                     - { property: 'departments', label: 'field.departments' }
                     - { property: 'updatedAt', label: 'field.updated_at' }
             form:
-                title: 'Добавить/редактировать подразделение'
                 fields:
-                    - { property: 'name', label: 'field.name' }
+                    - { property: 'id', label: 'field.id', type_options: { disabled: true } }
                     - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'name', label: 'field.name' }
                     - { property: 'departments', label: 'field.departments', type_options: { disabled: true } }
-            edit:
-                fields:
                     - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
                     - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
+            new:
+                fields:
+                    - '-id'
+                    - '-createdAt'
+                    - '-updatedAt'
