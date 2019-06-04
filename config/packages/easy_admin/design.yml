@@ -1,0 +1,7 @@
+easy_admin:
+    design:
+        menu:
+            - { entity: 'Subdivision', label: 'menu.subdivisions', default: true }
+            - { entity: 'Department', label: 'menu.departments' }
+            - { entity: 'Phone', label: 'menu.phones' }
+            - { entity: 'Employee', label: 'menu.employees' }

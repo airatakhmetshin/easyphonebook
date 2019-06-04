@@ -1,0 +1,33 @@
+easy_admin:
+    entities:
+        Phone:
+            class: App\Entity\Phone
+            list:
+                title: 'Список телефонов'
+                sort: 'updatedAt'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'priority', label: 'field.priority' }
+                    - { property: 'phoneNumber', label: 'field.phone_number' }
+                    - { property: 'alternateNumber', label: 'field.alternate_number' }
+                    - { property: 'cabinets', label: 'field.cabinets' }
+                    - { property: 'employees', label: 'field.employees' }
+                    - { property: 'department', label: 'field.department' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
+            form:
+                fields:
+                    - { property: 'id', label: 'field.id', type_options: { disabled: true } }
+                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'phoneNumber', label: 'field.phone_number' }
+                    - { property: 'alternateNumber', label: 'field.alternate_number' }
+                    - { property: 'cabinets', label: 'field.cabinets' }
+                    - { property: 'employees', label: 'field.employees' }
+                    - { property: 'department', label: 'field.department' }
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
+            new:
+                title: 'Новый номер телефона'
+                fields:
+                    - '-id'
+                    - '-createdAt'
+                    - '-updatedAt'

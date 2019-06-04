@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        Department:
+            class: App\Entity\Department
+            list:
+                title: 'Список отделов'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'priority', label: 'field.priority' }
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'subdivision', label: 'field.subdivision' }
+                    - { property: 'createdAt', label: 'field.created_at' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
+            form:
+                fields:
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'subdivision', label: 'field.subdivision' }
+                    - { property: 'phones', label: 'field.phones', type_options: { disabled: true } }
+            edit:
+                fields:
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }

@@ -1,0 +1,16 @@
+easy_admin:
+    entities:
+        Subdivision:
+            class: App\Entity\Subdivision
+            list:
+                title: 'Список подразделений'
+            form:
+                title: 'Добавить/редактировать подразделение'
+                fields:
+                    - { property: 'name', label: 'field.name' }
+                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'departments', label: 'field.departments', type_options: { disabled: true } }
+            edit:
+                fields:
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }

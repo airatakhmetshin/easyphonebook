@@ -1,0 +1,6 @@
+easy_admin:
+    list:
+        actions:
+            - { name: 'new', icon: 'plus', label: 'button.new' }
+            - { name: 'edit', icon: 'pencil', label: false, title: 'button.edit' }
+            - { name: 'delete', icon: 'trash', label: false, title: 'button.delete' }

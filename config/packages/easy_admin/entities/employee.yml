@@ -1,0 +1,30 @@
+easy_admin:
+    entities:
+        Employee:
+            class: App\Entity\Employee
+            list:
+                title: 'Список сотрудников'
+                sort: 'updatedAt'
+                fields:
+                    - { property: 'id', label: 'field.id' }
+                    - { property: 'fullname', label: 'field.fullname' }
+                    - { property: 'position', label: 'field.position' }
+                    - { property: 'cellphoneNumbers', label: 'field.cellphone_numbers' }
+                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'updatedAt', label: 'field.updated_at' }
+            form:
+                fields:
+                    - { property: 'id', label: 'field.id', type_options: { disabled: true } }
+                    - { property: 'lastName', label: 'field.lastName' }
+                    - { property: 'firstName', label: 'field.firstName' }
+                    - { property: 'middleName', label: 'field.middleName' }
+                    - { property: 'position', label: 'field.position' }
+                    - { property: 'cellphoneNumbers', label: 'field.cellphone_numbers' }
+                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
+            new:
+                fields:
+                    - '-id'
+                    - '-createdAt'
+                    - '-updatedAt'
