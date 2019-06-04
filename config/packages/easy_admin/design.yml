@@ -1,7 +1,7 @@
 easy_admin:
     design:
         menu:
-            - { entity: 'Subdivision', label: 'menu.subdivisions', default: true }
-            - { entity: 'Department', label: 'menu.departments' }
-            - { entity: 'Phone', label: 'menu.phones' }
-            - { entity: 'Employee', label: 'menu.employees' }
+            - { entity: 'Subdivision', label: 'menu.subdivisions', icon: 'building', default: true }
+            - { entity: 'Department', label: 'menu.departments', icon: 'user-friends' }
+            - { entity: 'Phone', label: 'menu.phones', icon: 'phone-square' }
+            - { entity: 'Employee', label: 'menu.employees', icon: 'address-card' }
