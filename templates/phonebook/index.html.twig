@@ -3,15 +3,24 @@
 {% block title %}Hello PhonebookController!{% endblock %}
 
 {% block body %}
-    {% if subdivisions %}
-        <ul>
-            <li><a href="{{ path('list') }}" target="_blank">all</a></li>
-            {% for subdivision in subdivisions %}
-                <li><a href="{{ path('listBy', {'id': subdivision.id}) }}" target="_blank">{{ subdivision.name }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <h1>Подразделений не найдено</h1>
-    {% endif %}
-    <a href="{{ path('easyadmin') }}" target="_blank">admin</a>
+    <div class="jumbotron">
+        <div class="col-sm-8 mx-auto">
+            <h1>Navbar examples</h1>
+            <p>This example is a quick exercise to illustrate how the navbar and its contents work. Some navbars extend the width of the viewport, others are confined within a <code>.container</code>. For positioning of navbars, checkout the <a href="/docs/4.3/examples/navbar-static/">top</a> and <a href="/docs/4.3/examples/navbar-fixed/">fixed top</a> examples.</p>
+            <p>At the smallest breakpoint, the collapse plugin is used to hide the links and show a menu button to toggle the collapsed content.</p>
+            <p>
+                <a class="btn btn-primary" href="/docs/4.3/components/navbar/" role="button">View navbar docs »</a>
+            </p>
+            {% if subdivisions %}
+                <ul>
+                    <li><a href="{{ path('list') }}" target="_blank">all</a></li>
+                    {% for subdivision in subdivisions %}
+                        <li><a href="{{ path('listBy', {'id': subdivision.id}) }}">{{ subdivision.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h1>Подразделений не найдено</h1>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

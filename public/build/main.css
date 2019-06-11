@@ -1,9 +1,10 @@
 body {
   padding-top: 5rem;
+  padding-bottom: 20px;
 }
 .starter-template {
   padding: 3rem 1.5rem;
-  text-align: center;
+  /*text-align: center;*/
 }
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -17,4 +18,10 @@ body {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
+}
+.subdivision-title {
+  text-align: center;
+}
+.navbar {
+  margin-bottom: 20px;
 }

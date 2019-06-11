@@ -1,28 +1,30 @@
-{% for subdivision in subdivisions %}
-    <h1>Subdivision: {{ subdivision }}</h1>
-    {% for department in subdivision.departments %}
-        <h2>Department: {{ department }}</h2>
-        <table border="1">
-            <thead>
-            <tr>
-                <th>Phone</th>
-                <th>Employee</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for phone in department.phones %}
-                <tr>
-                    <td>{{ phone }}{% if phone.cabinets %} ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }}){% endif %}</td>
-                    <td>
-                        <ul>
-                            {% for employee in phone.employees %}
-                                <li>{{ employee }}{% if employee.cellphoneNumbers %} ({% trans %}field.cellphone_numbers{% endtrans %}: {{ employee.cellphoneNumbers|join(', ') }}){% endif %}</li>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endfor %}
+{% for subdivision in subdivisions|filter(v => v.departments is not empty) -%}
+  <p class="h3 subdivision-title">Subdivision: {{ subdivision }}</p>
+  {% for department in subdivision.departments %}
+    <h5>Department: {{ department }}</h5>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th style="width: 30%" scope="col">Phone</th>
+        <th scope="col">Employee</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for phone in department.phones %}
+        <tr>
+          <td>{{ phone }}{% if phone.cabinets %} ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }}){% endif %}</td>
+          <td>
+            <ul class="list-unstyled list-group">
+              {% for employee in phone.employees %}
+                <li>{{ employee }}{% if employee.cellphoneNumbers %} ({% trans %}field.cellphone_numbers{% endtrans %}: {{ employee.cellphoneNumbers|join(', ') }}){% endif %}</li>
+              {% else %}
+                Не найдено
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endfor %}
 {% endfor %}
