@@ -24,7 +24,7 @@ class Phone
      * @ORM\Column(type="smallint")
      * @Assert\Range(min="0", max="99")
      */
-    private $priority;
+    private $priority = 0;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
