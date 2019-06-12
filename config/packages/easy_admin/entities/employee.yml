@@ -20,7 +20,7 @@ easy_admin:
                     - { property: 'middleName', label: 'field.middleName' }
                     - { property: 'position', label: 'field.position' }
                     - { property: 'cellphoneNumbers', label: 'field.cellphone_numbers' }
-                    - { property: 'phones', label: 'field.phones' }
+                    - { property: 'phones', label: 'field.phones', type_options: { by_reference: false} }
                     - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
                     - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
             new:
