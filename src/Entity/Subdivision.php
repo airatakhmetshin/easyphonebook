@@ -33,6 +33,7 @@ class Subdivision
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Department", mappedBy="subdivision")
+     * @ORM\OrderBy({"priority" = "DESC"})
      */
     private $departments;
 

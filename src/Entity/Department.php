@@ -33,6 +33,7 @@ class Department
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Phone", mappedBy="department")
+     * @ORM\OrderBy({"priority" = "DESC"})
      */
     private $phones;
 
