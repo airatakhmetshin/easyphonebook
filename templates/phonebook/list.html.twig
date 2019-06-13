@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PhonebookController!{% endblock %}
+{% block title %}
+  {%- if subdivisions|length > 1 -%}
+    {% trans %}title.all_subdivisions{% endtrans %}
+  {%- else -%}
+    {{ subdivisions|first }}
+  {%- endif -%}
+{% endblock %}
 
 {% block body %}
     {{ include('phonebook/table.html.twig') }}

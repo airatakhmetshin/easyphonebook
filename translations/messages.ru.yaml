@@ -30,3 +30,6 @@ field:
 navbar:
     homepage: Главная
     admin_panel: Управление
+title:
+    homepage: Телефонная книга
+    all_subdivisions: Все подразделения
