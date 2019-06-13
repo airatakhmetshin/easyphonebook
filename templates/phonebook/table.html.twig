@@ -12,7 +12,16 @@
       <tbody>
       {% for phone in department.phones %}
         <tr>
-          <td>{{ phone }}{% if phone.cabinets %} ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }}){% endif %}</td>
+          <td>
+            {%- if phone|length == 6 -%}
+              {{ phone|split('', 2)|join('-') }}
+            {%- else -%}
+              {{ phone }}
+            {%- endif -%}
+            {%- if phone.cabinets -%}
+              <span style="font-size: 0.85rem"> ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }})</span>
+            {%- endif -%}
+          </td>
           <td>
             <ul class="list-unstyled list-group">
               {% for employee in phone.employees %}
