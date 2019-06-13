@@ -1,21 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="{{ url('homepage') }}">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">subdivisions</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              {% for subdivision in subdivisions %}
-                <a class="dropdown-item" href="#">{{ subdivision }}</a>
-              {% endfor %}
-            </div>
-          </li>
-      </ul>
-      <a class="btn btn-secondary" href="{{ url('easyadmin') }}" role="button" target="_blank">{% trans %}admin{% endtrans %}</a>
-    </div>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse justify-content-md-center collapse" id="navbarToggler" style="">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('homepage') }}">{% trans %}navbar.homepage{% endtrans %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('easyadmin') }}" target="_blank">{% trans %}navbar.admin_panel{% endtrans %}</a>
+      </li>
+    </ul>
   </div>
 </nav>

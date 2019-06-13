@@ -27,3 +27,6 @@ field:
     cellphone_numbers: Сотовые телефоны
     created_at: Дата создания
     updated_at: Дата изменения
+navbar:
+    homepage: Главная
+    admin_panel: Управление
