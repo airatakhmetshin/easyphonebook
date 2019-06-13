@@ -3,7 +3,7 @@ body {
   padding-bottom: 20px;
 }
 .starter-template {
-  padding: 3rem 1.5rem;
+  /*padding-bottom: 1.5rem;*/
   /*text-align: center;*/
 }
 .bd-placeholder-img {
@@ -24,4 +24,7 @@ body {
 }
 .navbar {
   margin-bottom: 20px;
+}
+.jumbotron {
+  margin-bottom: 0;
 }
