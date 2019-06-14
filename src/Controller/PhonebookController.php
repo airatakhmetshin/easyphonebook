@@ -25,7 +25,7 @@ class PhonebookController extends AbstractController
     }
 
     /**
-     * @Route("/list/all", name="list")
+     * @Route("/phones", name="list")
      * @return Response
      */
     public function list(): Response
@@ -40,7 +40,7 @@ class PhonebookController extends AbstractController
     }
 
     /**
-     * @Route("/list/{id}", name="listBy", requirements={"page"="\d+"})
+     * @Route("/phones/{id}", name="listBy", requirements={"page"="\d+"})
      * @param int $id
      * @return Response
      */
