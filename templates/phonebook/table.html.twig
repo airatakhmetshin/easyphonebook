@@ -30,17 +30,17 @@
             </ul>
           </td>
           <td>
-            {%- if phone|length == 6 -%}
-              {{ phone|split('', 2)|join('-') }}
+            {%- if phone.phoneNumber|length == 6 -%}
+              {{ phone.phoneNumber|split('', 2)|join('-') }}
             {%- else -%}
-              {{ phone }}
-            {%- endif -%}
-            {%- if phone.cabinets -%}
-              <span style="font-size: 0.85rem"> ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }})</span>
+              {{ phone.phoneNumber }}
             {%- endif -%}
             {% if phone.alternateNumber -%}
               <span> ({{ phone.alternateNumber }})</span>
             {% endif %}
+            {%- if phone.cabinets -%}
+              <span style="font-size: 0.85rem"> ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }})</span>
+            {%- endif -%}
           </td>
         </tr>
       {% endfor %}

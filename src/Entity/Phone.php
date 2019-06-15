@@ -68,7 +68,11 @@ class Phone
 
     public function __toString()
     {
-        return $this->getPhoneNumber() ?: 'ID: ' . $this->getId();
+        if ($this->getPhoneNumber()) {
+            return $this->getAlternateNumber() ? sprintf('%s (%s)', $this->getPhoneNumber(), $this->getAlternateNumber()) : (string)$this->getPhoneNumber();
+        }
+
+        return 'ID: ' . $this->getId();
     }
 
     public function getId(): ?int
