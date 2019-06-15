@@ -15,7 +15,15 @@
           <td>
             <ul class="list-unstyled list-group">
               {% for employee in phone.employees %}
-                <li>{{ employee }}{% if employee.cellphoneNumbers %} ({% trans %}field.cellphone_numbers{% endtrans %}: {{ employee.cellphoneNumbers|join(', ') }}){% endif %}</li>
+                <li>
+                  {%- if employee.position -%}
+                    <span>{{ employee.position }} </span>
+                  {%- endif %}
+                  {{- employee }}
+                  {%- if employee.cellphoneNumbers -%}
+                    <span> ({% trans %}field.cellphone_numbers{% endtrans %}: {{ employee.cellphoneNumbers|join(', ') }})</span>
+                  {%- endif -%}
+                </li>
               {% else %}
                 <li>Не найдено</li>
               {% endfor %}
@@ -30,6 +38,9 @@
             {%- if phone.cabinets -%}
               <span style="font-size: 0.85rem"> ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }})</span>
             {%- endif -%}
+            {% if phone.alternateNumber -%}
+              <span> ({{ phone.alternateNumber }})</span>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
