@@ -134,7 +134,7 @@ class Employee
 
     public function setCellphoneNumbers(?array $cellphoneNumbers): self
     {
-        $this->cellphoneNumbers = $cellphoneNumbers;
+        $this->cellphoneNumbers = str_replace('-', '', $cellphoneNumbers);
 
         return $this;
     }

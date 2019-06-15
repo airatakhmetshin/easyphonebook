@@ -95,7 +95,7 @@ class Phone
 
     public function setPhoneNumber(?string $phoneNumber): self
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->phoneNumber = str_replace('-', '', $phoneNumber);
 
         return $this;
     }
@@ -107,7 +107,7 @@ class Phone
 
     public function setAlternateNumber(?string $alternateNumber): self
     {
-        $this->alternateNumber = $alternateNumber;
+        $this->alternateNumber = str_replace('-', '', $alternateNumber);
 
         return $this;
     }
