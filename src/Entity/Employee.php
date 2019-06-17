@@ -134,7 +134,15 @@ class Employee
 
     public function setCellphoneNumbers(?array $cellphoneNumbers): self
     {
-        $this->cellphoneNumbers = str_replace('-', '', $cellphoneNumbers);
+        foreach ($cellphoneNumbers as $key => $cellphoneNumber) {
+            if ($digits = preg_replace('/\D/', '', $cellphoneNumber)) {
+                $cellphoneNumbers[$key] = $digits;
+            } else {
+                unset($cellphoneNumbers[$key]);
+            }
+        }
+
+        $this->cellphoneNumbers = $cellphoneNumbers;
 
         return $this;
     }

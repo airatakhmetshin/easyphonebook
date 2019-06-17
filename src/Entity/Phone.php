@@ -99,7 +99,11 @@ class Phone
 
     public function setPhoneNumber(?string $phoneNumber): self
     {
-        $this->phoneNumber = str_replace('-', '', $phoneNumber);
+        if ($digits = preg_replace('/\D/', '', $phoneNumber)) {
+            $this->phoneNumber = $digits;
+        } else {
+            $this->phoneNumber = null;
+        }
 
         return $this;
     }
@@ -111,7 +115,11 @@ class Phone
 
     public function setAlternateNumber(?string $alternateNumber): self
     {
-        $this->alternateNumber = str_replace('-', '', $alternateNumber);
+        if ($digits = preg_replace('/\D/', '', $alternateNumber)) {
+            $this->alternateNumber = $digits;
+        } else {
+            $this->alternateNumber = null;
+        }
 
         return $this;
     }
