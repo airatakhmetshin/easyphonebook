@@ -28,3 +28,9 @@ body {
 .jumbotron {
   margin-bottom: 0;
 }
+.list-employee > li {
+  margin-bottom: .5em
+}
+.list-employee > li:last-child {
+  margin-bottom: 0
+}

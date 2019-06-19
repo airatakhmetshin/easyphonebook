@@ -13,16 +13,21 @@
       {% for phone in department.phones %}
         <tr>
           <td>
-            <ul class="list-unstyled list-group">
+            <ul class="list-unstyled list-group list-employee">
               {% for employee in phone.employees %}
                 <li>
-                  {%- if employee.position -%}
-                    <span>{{ employee.position }} </span>
-                  {%- endif %}
-                  {{- employee }}
-                  {%- if employee.cellphoneNumbers -%}
-                    <span> ({% trans %}field.cellphone_numbers{% endtrans %}: {{ employee.cellphoneNumbers|join(', ') }})</span>
-                  {%- endif -%}
+                  <ul class="list-unstyled list-group">
+                    <li><span style="font-size: 0.80rem">{{ employee.position }}</span> {{ employee }}</li>
+                    {% if employee.cellphoneNumbers %}
+                      <li>
+                        ({% trans %}field.cellphone_numbers{% endtrans %}:
+                        {% for cellphoneNumber in employee.cellphoneNumbers %}
+                          {{ cellphoneNumber|phoneNumber -}}
+                          {% if not loop.last %}, {% endif %}
+                        {%- endfor %})
+                      </li>
+                    {% endif %}
+                  </ul>
                 </li>
               {% else %}
                 <li>Не найдено</li>
@@ -30,17 +35,17 @@
             </ul>
           </td>
           <td>
-            {%- if phone.phoneNumber|length == 6 -%}
-              {{ phone.phoneNumber|split('', 2)|join('-') }}
-            {%- else -%}
-              {{ phone.phoneNumber }}
-            {%- endif -%}
-            {% if phone.alternateNumber -%}
-              <span> ({{ phone.alternateNumber }})</span>
-            {% endif %}
-            {%- if phone.cabinets -%}
-              <span style="font-size: 0.85rem"> ({% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }})</span>
-            {%- endif -%}
+            <ul class="list-unstyled list-group">
+              <li>
+                {{ phone.phoneNumber|phoneNumber }}
+                {% if phone.alternateNumber %}
+                  <span> ({{ phone.alternateNumber }})</span>
+                {% endif %}
+              </li>
+              {% if phone.cabinets %}
+                <li><span style="font-size: 0.85rem">{% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }}</span></li>
+              {% endif %}
+            </ul>
           </td>
         </tr>
       {% endfor %}
