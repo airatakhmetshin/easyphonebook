@@ -11,7 +11,7 @@
   <body>
     {{ include('navbar.html.twig') }}
     <main role="main" class="container">
-      <div class="starter-template">{% block body %}{% endblock %}</div>
+      {% block body %}{% endblock %}
     </main>
     {% block javascripts %}
       {{ encore_entry_script_tags('app') }}
