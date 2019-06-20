@@ -20,7 +20,7 @@
                     <li><span style="font-size: 0.80rem">{{ employee.position }}</span> {{ employee }}</li>
                     {% if employee.cellphoneNumbers %}
                       <li>
-                        ({% trans %}field.cellphone_numbers{% endtrans %}:
+                        ({% trans %}table.cellphone_numbers{% endtrans %}:
                         {% for cellphoneNumber in employee.cellphoneNumbers %}
                           {{ cellphoneNumber|phoneNumber -}}
                           {% if not loop.last %}, {% endif %}
@@ -43,7 +43,7 @@
                 {% endif %}
               </li>
               {% if phone.cabinets %}
-                <li><span style="font-size: 0.85rem">{% trans %}field.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }}</span></li>
+                <li><span style="font-size: 0.85rem">{% trans %}table.cabinets{% endtrans %}: {{ phone.cabinets|join(', ') }}</span></li>
               {% endif %}
             </ul>
           </td>

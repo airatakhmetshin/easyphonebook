@@ -6,27 +6,27 @@ easy_admin:
                 title: 'Список телефонов'
                 sort: 'updatedAt'
                 fields:
-                    - { property: 'id', label: 'field.id' }
-                    - { property: 'priority', label: 'field.priority' }
-                    - { property: 'phoneNumber', label: 'field.phone_number' }
-                    - { property: 'alternateNumber', label: 'field.alternate_number' }
-                    - { property: 'cabinets', label: 'field.cabinets' }
-                    - { property: 'employees', label: 'field.employees' }
-                    - { property: 'department', label: 'field.department' }
-                    - { property: 'updatedAt', label: 'field.updated_at' }
+                    - { property: 'id', label: 'admin.field.id' }
+                    - { property: 'priority', label: 'admin.field.priority' }
+                    - { property: 'phoneNumber', label: 'admin.field.phone_number' }
+                    - { property: 'alternateNumber', label: 'admin.field.alternate_number' }
+                    - { property: 'cabinets', label: 'admin.field.cabinets' }
+                    - { property: 'employees', label: 'admin.field.employees' }
+                    - { property: 'department', label: 'admin.field.department' }
+                    - { property: 'updatedAt', label: 'admin.field.updated_at' }
             search:
                 fields: ['department']
             form:
                 fields:
-                    - { property: 'id', label: 'field.id', type_options: { disabled: true } }
-                    - { property: 'priority', label: 'field.priority', type_options: { attr: { min: 0, max: 99 } } }
-                    - { property: 'phoneNumber', label: 'field.phone_number' }
-                    - { property: 'alternateNumber', label: 'field.alternate_number' }
-                    - { property: 'cabinets', label: 'field.cabinets' }
-                    - { property: 'employees', label: 'field.employees' }
-                    - { property: 'department', label: 'field.department' }
-                    - { property: 'createdAt', label: 'field.created_at', type_options: { disabled: true } }
-                    - { property: 'updatedAt', label: 'field.updated_at', type_options: { disabled: true } }
+                    - { property: 'id', label: 'admin.field.id', type_options: { disabled: true } }
+                    - { property: 'priority', label: 'admin.field.priority', type_options: { attr: { min: 0, max: 99 } } }
+                    - { property: 'phoneNumber', label: 'admin.field.phone_number' }
+                    - { property: 'alternateNumber', label: 'admin.field.alternate_number' }
+                    - { property: 'cabinets', label: 'admin.field.cabinets' }
+                    - { property: 'employees', label: 'admin.field.employees' }
+                    - { property: 'department', label: 'admin.field.department' }
+                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
+                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
             new:
                 title: 'Новый номер телефона'
                 fields:
