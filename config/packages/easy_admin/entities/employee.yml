@@ -2,8 +2,9 @@ easy_admin:
     entities:
         Employee:
             class: App\Entity\Employee
+            label: 'admin.label.employee'
             list:
-                title: 'Список сотрудников'
+                title: 'admin.title.list.employee'
                 sort: 'updatedAt'
                 fields:
                     - { property: 'id', label: 'admin.field.id' }
@@ -24,6 +25,7 @@ easy_admin:
                     - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
                     - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
             new:
+                title: 'admin.title.new.employee'
                 fields:
                     - '-id'
                     - '-createdAt'

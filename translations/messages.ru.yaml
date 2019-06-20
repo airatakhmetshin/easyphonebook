@@ -4,6 +4,22 @@ admin:
         departments: Отделы
         phones: Телефоны
         employees: Сотрудники
+    title:
+        list:
+            subdivision: Список подразделений
+            department: Список отделов
+            phone: Список телефонов
+            employee: Список сотрудников
+        new:
+            subdivision: Новое подразделение
+            department: Новый отдел
+            phone: Новый номер телефона
+            employee: Новый сотрудник
+    label:
+        subdivision: Подразделение
+        department: Отдел
+        phone: Телефон
+        employee: Сотрудник
     button:
         new: Создать
         edit: Редактировать

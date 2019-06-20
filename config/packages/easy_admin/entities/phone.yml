@@ -2,8 +2,9 @@ easy_admin:
     entities:
         Phone:
             class: App\Entity\Phone
+            label: 'admin.label.phone'
             list:
-                title: 'Список телефонов'
+                title: 'admin.title.list.phone'
                 sort: 'updatedAt'
                 fields:
                     - { property: 'id', label: 'admin.field.id' }
@@ -28,7 +29,7 @@ easy_admin:
                     - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
                     - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
             new:
-                title: 'Новый номер телефона'
+                title: 'admin.title.new.phone'
                 fields:
                     - '-id'
                     - '-createdAt'

@@ -2,8 +2,9 @@ easy_admin:
     entities:
         Subdivision:
             class: App\Entity\Subdivision
+            label: 'admin.label.subdivision'
             list:
-                title: 'Список подразделений'
+                title: 'admin.title.list.subdivision'
                 sort: 'updatedAt'
                 fields:
                     - { property: 'id', label: 'admin.field.id' }
@@ -20,6 +21,7 @@ easy_admin:
                     - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
                     - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
             new:
+                title: 'admin.title.new.subdivision'
                 fields:
                     - '-id'
                     - '-createdAt'
