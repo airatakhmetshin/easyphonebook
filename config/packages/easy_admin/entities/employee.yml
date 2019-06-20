@@ -22,8 +22,8 @@ easy_admin:
                     - { property: 'position', label: 'admin.field.position' }
                     - { property: 'cellphoneNumbers', label: 'admin.field.cellphone_numbers' }
                     - { property: 'phones', label: 'admin.field.phones', type_options: { by_reference: false} }
-                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
-                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
+                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { widget: 'single_text', required: false, disabled: true } }
+                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { widget: 'single_text', required: false, disabled: true } }
             new:
                 title: 'admin.title.new.employee'
                 fields:

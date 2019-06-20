@@ -26,8 +26,8 @@ easy_admin:
                     - { property: 'cabinets', label: 'admin.field.cabinets' }
                     - { property: 'employees', label: 'admin.field.employees' }
                     - { property: 'department', label: 'admin.field.department' }
-                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
-                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
+                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { widget: 'single_text', required: false, disabled: true } }
+                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { widget: 'single_text', required: false, disabled: true } }
             new:
                 title: 'admin.title.new.phone'
                 fields:

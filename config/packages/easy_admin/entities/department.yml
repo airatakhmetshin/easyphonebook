@@ -20,8 +20,8 @@ easy_admin:
                     - { property: 'name', label: 'admin.field.name' }
                     - { property: 'phones', label: 'admin.field.phones', type_options: { disabled: true } }
                     - { property: 'subdivision', label: 'admin.field.subdivision' }
-                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { disabled: true } }
-                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { disabled: true } }
+                    - { property: 'createdAt', label: 'admin.field.created_at', type_options: { widget: 'single_text', required: false, disabled: true } }
+                    - { property: 'updatedAt', label: 'admin.field.updated_at', type_options: { widget: 'single_text', required: false, disabled: true } }
             new:
                 title: 'admin.title.new.department'
                 fields:
