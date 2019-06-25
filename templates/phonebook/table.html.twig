@@ -17,7 +17,7 @@
               {% for employee in phone.employees %}
                 <li>
                   <ul class="list-unstyled list-group">
-                    <li><span style="font-size: 0.80rem">{{ employee.position }}</span> {{ employee }}</li>
+                    <li>{% if employee.position %}<span style="font-size: 0.80rem">{{ employee.position }}</span> {% endif %}{{ employee }}</li>
                     {% if employee.cellphoneNumbers %}
                       <li>
                         ({% trans %}table.cellphone_numbers{% endtrans %}:

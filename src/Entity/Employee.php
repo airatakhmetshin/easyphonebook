@@ -120,7 +120,7 @@ class Employee
         return $this->position;
     }
 
-    public function setPosition(string $position): self
+    public function setPosition(?string $position): self
     {
         $this->position = $position;
 
