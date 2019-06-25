@@ -131,6 +131,10 @@ class Phone
 
     public function setCabinets(?array $cabinets): self
     {
+        array_walk($cabinets, static function (&$cabinet) {
+            $cabinet = mb_strtolower($cabinet, 'UTF-8');
+        });
+
         $this->cabinets = $cabinets;
 
         return $this;
