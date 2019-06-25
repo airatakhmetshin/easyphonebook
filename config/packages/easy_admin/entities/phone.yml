@@ -16,7 +16,13 @@ easy_admin:
                     - { property: 'department', label: 'admin.field.department' }
                     - { property: 'updatedAt', label: 'admin.field.updated_at' }
             search:
-                fields: ['department']
+                fields:
+                    - { property: 'id' }
+                    - { property: 'priority' }
+                    - { property: 'phoneNumber' }
+                    - { property: 'alternateNumber' }
+                    - { property: 'cabinets' }
+                    - { property: 'department.name' }
             form:
                 fields:
                     - { property: 'id', label: 'admin.field.id', type_options: { disabled: true } }
