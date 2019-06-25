@@ -57,3 +57,5 @@ table:
     employee: Сотрудник
     cellphone_numbers: Сот. телефоны
     cabinets: Кабинеты
+homepage:
+    all_subdivisions: Все подразделения
