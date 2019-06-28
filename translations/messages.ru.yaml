@@ -51,8 +51,6 @@ title:
     homepage: Телефонная книга
     all_subdivisions: Все подразделения
 table:
-    subdivision: Подразделение
-    department: Отдел
     phone: Телефон
     employee: Сотрудник
     cellphone_numbers: Сот. телефоны

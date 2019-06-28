@@ -1,7 +1,7 @@
 {% for subdivision in subdivisions|filter(v => v.departments is not empty) -%}
-  <p class="h3 subdivision-title">{% trans %}table.subdivision{% endtrans %}: {{ subdivision }}</p>
+  <p class="h3 subdivision-title">{{ subdivision }}</p>
   {% for department in subdivision.departments if department.phones is not empty %}
-    <h5>{% trans %}table.department{% endtrans %}: {{ department }}</h5>
+    <p class="h5 department-title">{{ department }}</p>
     <table class="table table-bordered table-hover">
       <thead>
       <tr>
