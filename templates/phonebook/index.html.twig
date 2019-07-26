@@ -14,7 +14,7 @@
       {% if subdivisions %}
         <ul>
           <li><a href="{{ path('list') }}">{% trans %}homepage.all_subdivisions{% endtrans %}</a></li>
-          {% for subdivision in subdivisions if subdivision.departments is not empty %}
+          {% for subdivision in subdivisions %}
             <li><a href="{{ path('listBy', {'id': subdivision.id}) }}">{{ subdivision.name }}</a></li>
           {% endfor %}
         </ul>

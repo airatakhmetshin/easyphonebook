@@ -19,6 +19,56 @@ class SubdivisionRepository extends ServiceEntityRepository
         parent::__construct($registry, Subdivision::class);
     }
 
+    /**
+     * @return array
+     */
+    public function findAllIfDepartmentAndPhonesExist(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.departments', 'd')
+            ->innerJoin('d.phones', 'p')
+            ->orderBy('s.priority', 'DESC')
+            ->addOrderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return array
+     */
+    public function findAllWithPhones(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s, d, p, e')
+            ->leftJoin('s.departments', 'd')
+            ->leftJoin('d.phones', 'p')
+            ->leftJoin('p.employees', 'e')
+            ->orderBy('s.priority', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param int $id
+     * @return Subdivision|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findOneByIdWithPhones(int $id): ?Subdivision
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s, d, p, e')
+            ->andWhere('s.id = :id')
+            ->setParameter('id', $id)
+            ->leftJoin('s.departments', 'd')
+            ->leftJoin('d.phones', 'p')
+            ->leftJoin('p.employees', 'e')
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     // /**
     //  * @return Subdivision[] Returns an array of Subdivision objects
     //  */

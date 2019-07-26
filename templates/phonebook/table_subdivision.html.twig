@@ -1,4 +1,4 @@
-{% for subdivision in subdivisions|filter(v => v.departments is not empty) -%}
+{% macro table(subdivision) %}
   <p class="h3 subdivision-title">{{ subdivision }}</p>
   {% for department in subdivision.departments if department.phones is not empty %}
     <p class="h5 department-title">{{ department }}</p>
@@ -44,4 +44,4 @@
       </tbody>
     </table>
   {% endfor %}
-{% endfor %}
+{% endmacro %}

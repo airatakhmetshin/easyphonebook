@@ -3,12 +3,26 @@
 namespace App\Controller;
 
 use App\Entity\Subdivision;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PhonebookController extends AbstractController
 {
+    /** @var TranslatorInterface */
+    private $translator;
+
+    /**
+     * PhonebookController constructor.
+     * @param TranslatorInterface $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @Route("/", name="homepage")
      * @return Response
@@ -17,7 +31,7 @@ class PhonebookController extends AbstractController
     {
         $subdivisions = $this->getDoctrine()
             ->getRepository(Subdivision::class)
-            ->findBy([], ['priority' => 'DESC']);
+            ->findAllIfDepartmentAndPhonesExist();
 
         return $this->render('phonebook/index.html.twig', [
             'subdivisions' => $subdivisions
@@ -32,7 +46,11 @@ class PhonebookController extends AbstractController
     {
         $subdivisions = $this->getDoctrine()
             ->getRepository(Subdivision::class)
-            ->findBy([], ['priority' => 'DESC']);
+            ->findAllWithPhones();
+
+        if (!$subdivisions) {
+            throw $this->createNotFoundException($this->translator->trans('exception.subdivisions_not_found'));
+        }
 
         return $this->render('phonebook/list.html.twig', [
             'subdivisions' => $subdivisions
@@ -43,15 +61,20 @@ class PhonebookController extends AbstractController
      * @Route("/phones/{id}", name="listBy", requirements={"page"="\d+"})
      * @param int $id
      * @return Response
+     * @throws NonUniqueResultException
      */
     public function listBy(int $id): Response
     {
         $subdivision = $this->getDoctrine()
             ->getRepository(Subdivision::class)
-            ->find($id);
+            ->findOneByIdWithPhones($id);
 
-        return $this->render('phonebook/list.html.twig', [
-            'subdivisions' => [$subdivision],
+        if (!$subdivision) {
+            throw $this->createNotFoundException($this->translator->trans('exception.subdivision_not_found'));
+        }
+
+        return $this->render('phonebook/list_by.html.twig', [
+            'subdivision' => $subdivision,
         ]);
     }
 }

@@ -57,3 +57,6 @@ table:
     cabinets: Кабинеты
 homepage:
     all_subdivisions: Все подразделения
+exception:
+    subdivision_not_found: Подразделение не найдено
+    subdivisions_not_found: Подразделений не найдено
