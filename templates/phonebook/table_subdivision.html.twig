@@ -1,47 +1,49 @@
 {% macro table(subdivision) %}
   <p class="h3 subdivision-title">{{ subdivision }}</p>
-  {% for department in subdivision.departments if department.phones is not empty %}
-    <p class="h5 department-title">{{ department }}</p>
-    <table class="table table-bordered table-hover">
-      <thead>
-      <tr>
-        <th scope="col">{% trans %}table.employee{% endtrans %}</th>
-        <th style="width: 30%" scope="col">{% trans %}table.phone{% endtrans %}</th>
-      </tr>
-      </thead>
-      <tbody>
-      {% for phone in department.phones %}
+  {% for department in subdivision.departments %}
+    {% if department.phones is not empty %}
+      <p class="h5 department-title">{{ department }}</p>
+      <table class="table table-bordered table-hover">
+        <thead>
         <tr>
-          <td>
-            <ul class="list-unstyled list-group list-employee">
-              {% for employee in phone.employees %}
-                <li>
-                  <ul class="list-unstyled list-group">
-                    <li>{% if employee.position %}<span style="font-size: 0.80rem">{{ employee.position }}</span> {% endif %}{{ employee }}</li>
-                    {% if employee.cellphoneNumbers %}
-                      <li>
-                        ({% trans %}table.cellphone_numbers{% endtrans %}:
-                        {% for cellphoneNumber in employee.cellphoneNumbers %}
-                          {{ cellphoneNumber|phoneNumber -}}
-                          {% if not loop.last %}, {% endif %}
-                        {%- endfor %})
-                      </li>
-                    {% endif %}
-                  </ul>
-                </li>
-              {% endfor %}
-              {% if phone.cabinets %}
-                <li>{{ phone.cabinets|join(', ')|capitalize  }}</li>
-              {% endif %}
-            </ul>
-          </td>
-          <td>
-            {%- if phone.phoneNumber %}{{ phone.phoneNumber|phoneNumber }}{% endif -%}
-            {% if phone.alternateNumber %}, {{ phone.alternateNumber|phoneNumber }}{% endif -%}
-          </td>
+          <th scope="col">{% trans %}table.employee{% endtrans %}</th>
+          <th style="width: 30%" scope="col">{% trans %}table.phone{% endtrans %}</th>
         </tr>
-      {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        {% for phone in department.phones %}
+          <tr>
+            <td>
+              <ul class="list-unstyled list-group list-employee">
+                {% for employee in phone.employees %}
+                  <li>
+                    <ul class="list-unstyled list-group">
+                      <li>{% if employee.position %}<span style="font-size: 0.80rem">{{ employee.position }}</span> {% endif %}{{ employee }}</li>
+                      {% if employee.cellphoneNumbers %}
+                        <li>
+                          ({% trans %}table.cellphone_numbers{% endtrans %}:
+                          {% for cellphoneNumber in employee.cellphoneNumbers %}
+                            {{ cellphoneNumber|phoneNumber -}}
+                            {% if not loop.last %}, {% endif %}
+                          {%- endfor %})
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </li>
+                {% endfor %}
+                {% if phone.cabinets %}
+                  <li>{{ phone.cabinets|join(', ')|capitalize  }}</li>
+                {% endif %}
+              </ul>
+            </td>
+            <td>
+              {%- if phone.phoneNumber %}{{ phone.phoneNumber|phoneNumber }}{% endif -%}
+              {% if phone.alternateNumber %}, {{ phone.alternateNumber|phoneNumber }}{% endif -%}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
   {% endfor %}
 {% endmacro %}
