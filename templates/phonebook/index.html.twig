@@ -12,12 +12,26 @@
         <a class="btn btn-primary" href="/docs/4.3/components/navbar/" role="button">View navbar docs »</a>
       </p>
       {% if subdivisions %}
-        <ul>
+        <ol class="list-group subdivisions-list">
           <li><a href="{{ path('list') }}">{% trans %}homepage.all_subdivisions{% endtrans %}</a></li>
           {% for subdivision in subdivisions %}
-            <li><a href="{{ path('listBy', {'id': subdivision.id}) }}">{{ subdivision.name }}</a></li>
+            <li>
+              <a href="{{ path('listBy', {'id': subdivision.id}) }}">{{ subdivision.name }}</a>
+              {% if subdivision.departments|length > 1 %}
+                <a class="text-dark" title="Раскрыть список" data-toggle="collapse" href="#collapse-{{ subdivision.id }}" role="button" aria-expanded="false" aria-controls="collapse-{{ subdivision.id }}">
+                  [отделов: {{ subdivision.departments|length }}]
+                </a>
+                  <div class="collapse multi-collapse" id="collapse-{{ subdivision.id }}">
+                    <ul class="list-group list-unstyled departments-list">
+                      {% for department in subdivision.departments %}
+                        <li><a class="text-dark" href="{{ path('list', {'_fragment': department.id}) }}">- {{ department }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+              {% endif %}
+            </li>
           {% endfor %}
-        </ul>
+        </ol>
       {% else %}
         <h1>Подразделений не найдено</h1>
       {% endif %}

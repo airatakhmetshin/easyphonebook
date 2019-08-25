@@ -2,7 +2,9 @@
   <p class="h3 subdivision-title">{{ subdivision }}</p>
   {% for department in subdivision.departments %}
     {% if department.phones is not empty %}
-      <p class="h5 department-title">{{ department }}</p>
+      <p id="{{ department.id }}" class="h5 department-title anchor">
+        <span>{{ department }} <a class="anchor-link" href="#{{ department.id }}">#</a></span>
+      </p>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>

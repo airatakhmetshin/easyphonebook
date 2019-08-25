@@ -25,6 +25,7 @@ class SubdivisionRepository extends ServiceEntityRepository
     public function findAllIfDepartmentAndPhonesExist(): array
     {
         return $this->createQueryBuilder('s')
+            ->select('s, d')
             ->leftJoin('s.departments', 'd')
             ->innerJoin('d.phones', 'p')
             ->orderBy('s.priority', 'DESC')
