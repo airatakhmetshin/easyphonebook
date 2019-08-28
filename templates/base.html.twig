@@ -13,6 +13,7 @@
     <main role="main" class="container">
       {% block body %}{% endblock %}
     </main>
+    {{ include('phonebook/footer.html.twig') }}
     {% block javascripts %}
       {{ encore_entry_script_tags('app') }}
     {% endblock %}
