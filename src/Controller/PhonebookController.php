@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\Subdivision;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -76,5 +79,27 @@ class PhonebookController extends AbstractController
         return $this->render('phonebook/list_by.html.twig', [
             'subdivision' => $subdivision,
         ]);
+    }
+
+    /**
+     * @Route("/getpdf", name="getPdf")
+     * @param Filesystem $filesystem
+     * @return BinaryFileResponse
+     */
+    public function getPdf(Filesystem $filesystem): BinaryFileResponse
+    {
+        $pathToPdf = $this->getParameter('app.path_to_pdf');
+
+        if (!$filesystem->exists($pathToPdf)) {
+            throw $this->createNotFoundException('Файл не найден');
+        }
+
+        $response = new BinaryFileResponse($pathToPdf);
+        $response->setContentDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $this->getParameter('app.pdf_filename')
+        );
+
+        return $response;
     }
 }
