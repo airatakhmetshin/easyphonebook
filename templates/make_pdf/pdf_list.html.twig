@@ -1,0 +1,87 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  table {
+    margin-bottom: 10px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: block;
+  }
+
+  .list-employee > li {
+    margin-bottom: .5em;
+  }
+
+  .list-employee > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .page_break {
+    page-break-after: always;
+  }
+</style>
+
+{# @var subdivision \App\Entity\Subdivision #}
+{% for subdivision in subdivisions %}
+  <h4>{{ subdivision }}</h4>
+  {# @var department \App\Entity\Department #}
+  {% for department in subdivision.departments %}
+    {% if department.phones is not empty %}
+      <h5 style="page-break-after: avoid !important;">{{ department }}</h5>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>{% trans %}table.employee{% endtrans %}</th>
+            <th style="width: 30%" >{% trans %}table.phone{% endtrans %}</th>
+          </tr>
+        </thead>
+        <tbody>
+        {# @var phone \App\Entity\Phone #}
+        {% for phone in department.phones %}
+          <tr>
+            <td>
+              <ul class="list-employee">
+                {# @var empoyee \App\Entity\Employee #}
+                {% for employee in phone.employees %}
+                  <li>
+                    <ul>
+                      <li>{% if employee.position %}<span style="font-size: 0.80rem">{{ employee.position }}</span> {% endif %}{{ employee }}</li>
+                      {% if employee.cellphoneNumbers %}
+                        <li>
+                          ({% trans %}table.cellphone_numbers{% endtrans %}:
+                          {% for cellphoneNumber in employee.cellphoneNumbers %}
+                          {{ cellphoneNumber|phoneNumber }}
+                          {% if not loop.last %}, {% endif %}
+                          {% endfor %})
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </li>
+                {% endfor %}
+                {% if phone.cabinets %}
+                  <li>{{ phone.cabinets|join(', ')|capitalize }}</li>
+                {% endif %}
+              </ul>
+            </td>
+            <td>
+              {% if phone.phoneNumber %}{{ phone.phoneNumber|phoneNumber }}{% endif %}
+              {% if phone.alternateNumber %}, {{ phone.alternateNumber|phoneNumber }}{% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  {% endfor %}
+  {% if loop.last == false %}
+    <div class="page_break"></div>
+  {% endif %}
+{% endfor %}
