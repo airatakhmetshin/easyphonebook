@@ -69,13 +69,13 @@ class MakePdfCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io             = new SymfonyStyle($input, $output);
-        $cache          = new FilesystemAdapter();
-        $pathFile       = $this->container->getParameter('app.path_to_pdf');
-        $generationDate = date('Y-m-d_H:i:s');
+        $io               = new SymfonyStyle($input, $output);
+        $cache            = new FilesystemAdapter();
+        $needUpdatePdfKey = $this->container->getParameter('app.need_update_pdf_key');
+        $pathFile         = $this->container->getParameter('app.path_to_pdf');
 
         /** @var ItemInterface $needUpdate */
-        $needUpdate = $cache->getItem('app.need_update_pdf');
+        $needUpdate = $cache->getItem($needUpdatePdfKey);
 
         /** Проверяем есть ли необходимость в обновлении файла (в кэше есть нужный ключ или файл отсутствует) */
         if ($this->filesystem->exists($pathFile) && !$needUpdate->get()) {
@@ -94,8 +94,8 @@ class MakePdfCommand extends Command
 
         $html = $this->container->get('twig')->render('make_pdf/pdf_list.html.twig', ['subdivisions' => $subdivisions]);
 
-        $mpdf = new Mpdf();
-        $mpdf->SetHTMLFooter("<div style=\"text-align: right\">Сгенерировано: $generationDate</div>");
+        $mpdf = new Mpdf(['margin_left' => 5, 'margin_right' => 5, 'margin_header' => 5, 'margin_footer' => 5]);
+        $mpdf->use_kwt = true;
         $mpdf->WriteHTML($html);
 
         $pdfString = $mpdf->Output(null, 'S');

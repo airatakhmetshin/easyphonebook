@@ -1,27 +1,15 @@
 <style>
-  table, th, td {
+  .table-border {
     border: 1px solid black;
+    border-collapse: collapse;
   }
 
   table {
-    margin-bottom: 10px;
+    width: 100%;
   }
 
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    display: block;
-  }
-
-  .list-employee > li {
-    margin-bottom: .5em;
-  }
-
-  .list-employee > li:last-child {
-    margin-bottom: 0;
+  h5 {
+    margin: 20px 0 5px 5px;
   }
 
   .page_break {
@@ -29,50 +17,67 @@
   }
 </style>
 
+<htmlpagefooter name="footer">
+  <table>
+    <tr>
+      <td width="33%"></td>
+      <td width="33%" style="text-align: center;">{PAGENO}/{nbpg}</td>
+      <td width="33%" style="text-align: right;">Дата создания: {DATE j.m.Y H:i:s}</td>
+    </tr>
+  </table>
+</htmlpagefooter>
+<sethtmlpagefooter name="footer" value="on" />
+
 {# @var subdivision \App\Entity\Subdivision #}
 {% for subdivision in subdivisions %}
-  <h4>{{ subdivision }}</h4>
+  <htmlpageheader name="header_{{ subdivision }}">
+    <div style="text-align: center"><h4>{{ subdivision }}</h4></div>
+  </htmlpageheader>
+  <sethtmlpageheader name="header_{{ subdivision }}" value="on" show-this-page="1" />
+
   {# @var department \App\Entity\Department #}
   {% for department in subdivision.departments %}
     {% if department.phones is not empty %}
-      <h5 style="page-break-after: avoid !important;">{{ department }}</h5>
-      <table width="100%">
+      <h5>{{ department }}</h5>
+      <table class="table-border">
         <thead>
           <tr>
-            <th>{% trans %}table.employee{% endtrans %}</th>
-            <th style="width: 30%" >{% trans %}table.phone{% endtrans %}</th>
+            <th class="table-border">{% trans %}table.employee{% endtrans %}</th>
+            <th class="table-border" style="width: 25%" >{% trans %}table.phone{% endtrans %}</th>
           </tr>
         </thead>
         <tbody>
         {# @var phone \App\Entity\Phone #}
         {% for phone in department.phones %}
           <tr>
-            <td>
-              <ul class="list-employee">
-                {# @var empoyee \App\Entity\Employee #}
-                {% for employee in phone.employees %}
-                  <li>
-                    <ul>
-                      <li>{% if employee.position %}<span style="font-size: 0.80rem">{{ employee.position }}</span> {% endif %}{{ employee }}</li>
-                      {% if employee.cellphoneNumbers %}
-                        <li>
-                          ({% trans %}table.cellphone_numbers{% endtrans %}:
+            <td class="table-border">
+              <table>
+                <tbody>
+                  {# @var empoyee \App\Entity\Employee #}
+                  {% for employee in phone.employees %}
+                    <tr>
+                      <td>
+                        {% if employee.position %}<span style="font-size: 0.80rem">{{ employee.position }}</span> {% endif %}{{ employee }}
+                        {% if employee.cellphoneNumbers %}
+                          <br>({% trans %}table.cellphone_numbers{% endtrans %}:
                           {% for cellphoneNumber in employee.cellphoneNumbers %}
-                          {{ cellphoneNumber|phoneNumber }}
-                          {% if not loop.last %}, {% endif %}
-                          {% endfor %})
-                        </li>
-                      {% endif %}
-                    </ul>
-                  </li>
-                {% endfor %}
-                {% if phone.cabinets %}
-                  <li>{{ phone.cabinets|join(', ')|capitalize }}</li>
-                {% endif %}
-              </ul>
+                            {{ cellphoneNumber|phoneNumber -}}
+                            {% if not loop.last %}, {% endif %}
+                          {%- endfor %})
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  {% if phone.cabinets %}
+                    <tr>
+                      <td>{{ phone.cabinets|join(', ')|capitalize }}</td>
+                    </tr>
+                  {% endif %}
+                </tbody>
+              </table>
             </td>
-            <td>
-              {% if phone.phoneNumber %}{{ phone.phoneNumber|phoneNumber }}{% endif %}
+            <td class="table-border" style="padding: 10px;">
+              {% if phone.phoneNumber %}{{ phone.phoneNumber|phoneNumber }}{% endif -%}
               {% if phone.alternateNumber %}, {{ phone.alternateNumber|phoneNumber }}{% endif %}
             </td>
           </tr>
