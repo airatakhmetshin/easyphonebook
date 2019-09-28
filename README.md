@@ -36,6 +36,11 @@ php bin/console doctrine:migrations:migrate
 php bin/console run
 ```
 
+Сгенерировать PDF-файл (для оффлайн доступа или печати)
+```
+php bin/console app:make-pdf
+```
+
 ### Установка для Production-среды:
 
 ```
@@ -49,4 +54,9 @@ yarn install
 yarn encore production
 php bin/console doctrine:migrations:migrate
 php bin/console cache:warmup
+```
+
+Добавить в cron запись:
+```
+* * * * * php /path-to-project/phonebook/bin/console app:make-pdf
 ```
